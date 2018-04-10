@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?><artifacts>
+    <artifact name="paymentAPI" groupId="org.wso2.ei.sample.api" version="1.0.0" type="synapse/api" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/api/paymentAPI.xml</file>
+    </artifact>
+    <artifact name="legacyPaymentService" groupId="org.wso2.ei.sample.api" version="1.0.0" type="synapse/api" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/api/legacyPaymentService.xml</file>
+    </artifact>
+    <artifact name="log" groupId="org.wso2.ei.sample.template" version="1.0.0" type="synapse/sequenceTemplate" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/templates/log.xml</file>
+    </artifact>
+    <artifact name="payInSequence" groupId="org.wso2.ei.sample.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/payInSequence.xml</file>
+    </artifact>
+    <artifact name="embeddedLegacyPaymentServiceEndpoint" groupId="org.wso2.ei.sample.endpoint" version="1.0.0" type="synapse/endpoint" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/endpoints/embeddedLegacyPaymentServiceEndpoint.xml</file>
+    </artifact>
+    <artifact name="payErrorSequence" groupId="org.wso2.ei.sample.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/payErrorSequence.xml</file>
+    </artifact>
+</artifacts>

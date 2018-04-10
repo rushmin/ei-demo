@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api context="/payment" name="paymentAPI" xmlns="http://ws.apache.org/ns/synapse">
+    <resource faultSequence="payErrorSequence" inSequence="payInSequence" methods="POST" url-mapping="/pay">
+        <outSequence/>
+    </resource>
+</api>

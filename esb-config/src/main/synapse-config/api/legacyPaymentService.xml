@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api context="/legacyPaymentService" name="legacyPaymentService" xmlns="http://ws.apache.org/ns/synapse">
+    <resource methods="POST">
+        <inSequence>
+            <payloadFactory media-type="xml">
+                <format>
+                    <receipt xmlns="">
+                        <receiptID>$1</receiptID>
+                        <paymentID>$2</paymentID>
+                        <status>SUCCESS</status>
+                    </receipt>
+                </format>
+                <args>
+                    <arg evaluator="xml" expression="get-property('MessageID')"/>
+                    <arg evaluator="xml" expression="//paymentID/text()"/>
+                </args>
+            </payloadFactory>
+            <respond/>
+        </inSequence>
+        <outSequence/>
+        <faultSequence/>
+    </resource>
+</api>
