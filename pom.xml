@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
+  
+  <parent>
+  	<groupId>org.wso2</groupId>
+  	<artifactId>wso2</artifactId>
+  	<version>1</version>
+  </parent>
+  
+  
   <groupId>org.wso2.ei.sample</groupId>
   <artifactId>ei-sample</artifactId>
   <version>1.0.0</version>
@@ -12,6 +19,7 @@
   	<module>dynamic-resources</module>
     <module>esb-config</module>
     <module>distribution</module>
+    <module>excel-message-builder</module>
   </modules>
   <build>
     <plugins>
@@ -19,7 +27,7 @@
         <artifactId>maven-eclipse-plugin</artifactId>
         <version>2.9</version>
         <configuration>
-          <buildcommands />
+          <buildcommands/>
           <projectnatures>
             <projectnature>org.wso2.developerstudio.eclipse.mavenmultimodule.project.nature</projectnature>
           </projectnatures>

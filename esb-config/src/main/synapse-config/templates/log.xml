@@ -2,7 +2,7 @@
 <template name="log" xmlns="http://ws.apache.org/ns/synapse">
     <parameter name="message"/>
     <sequence>
-        <log level="custom">
+        <log level="full">
             <property expression="$func:message" name="message"/>
         </log>
     </sequence>
