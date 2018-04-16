@@ -1,0 +1,178 @@
+{
+	"variables": [],
+	"info": {
+		"name": "ei-samples",
+		"_postman_id": "e1c93c9f-57f1-0455-de94-30f6dd8a9c5a",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Batch",
+			"description": "",
+			"item": [
+				{
+					"name": "Excel over HTTP",
+					"request": {
+						"url": "http://{{host}}:8280/payment/pay/batch",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/vnd.ms-excel",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "file",
+							"file": {
+								"src": ""
+							}
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "CSV over HTTP",
+					"request": {
+						"url": "http://{{host}}:8280/payment/pay/batch",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/csv",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "PaymentID,Amount,From\n000010,250,rushmin@wso2.com\n000011,300,malintha@wso2.com\n000012,350,nandika@wso2.com"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Mock",
+			"description": "",
+			"item": [
+				{
+					"name": "Legacy Payment Service (Mock)",
+					"request": {
+						"url": "http://{{host}}:8280/mock",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/xml",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<data>rushmin</data>"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Do Payment",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"postman.setEnvironmentVariable(\"paymentID\", Math.floor(Math.random() * 100000) + 1  );"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://{{host}}:8280/payment/pay",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/xml",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<payment>\n\t<paymentID>{{paymentID}}</paymentID>\n\t<amount>1000</amount>\n\t<from>rushmin@wso2.com</from>\n</payment>"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Transform : FPML",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"postman.setEnvironmentVariable(\"paymentID\", Math.floor(Math.random() * 100000) + 1  );"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://{{host}}:8280/transform/fpml",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/xml",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<nonpublicExecutionReport xmlns=\"http://www.fpml.org/FpML-5/reporting\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.fpml.org/FpML-5/reporting ../fpml-main-5-10.xsd http://www.w3.org/2000/09/xmldsig# ../xmldsig-core-schema.xsd\">\r\n  <header>\r\n    <messageId>TestReport-00001-2018-04-03T12:01:23Z</messageId>\r\n    <sentBy>Thomson-Reuters</sentBy>\r\n    <sendTo>Andile</sendTo>\r\n    <creationTimestamp>2018-04-03T12:01:23Z</creationTimestamp>\r\n  </header>\r\n  <isCorrection>false</isCorrection>\r\n  <originatingEvent>Trade</originatingEvent>\r\n  <trade>\r\n    <tradeHeader>\r\n      <partyTradeIdentifier>\r\n\t\t<tradeId tradeIdScheme=\"http://www.fpml.org/coding-scheme/external/unique-transaction-identifier\">TestTrade-00001</tradeId>\r\n      </partyTradeIdentifier>\r\n      <partyTradeInformation>\r\n        <partyReference href=\"party1\" />\r\n        <relatedParty>\r\n          <partyReference href=\"party1\" />\r\n          <role>ExecutingParty</role>\r\n        </relatedParty>\r\n        <relatedParty>\r\n          <partyReference href=\"party1\" />\r\n          <role>Buyer</role>\r\n        </relatedParty>\r\n        <relatedParty>\r\n          <partyReference href=\"party2\" />\r\n          <role>Seller</role>\r\n        </relatedParty>\r\n        <relatedPerson>\r\n          <personReference href=\"person1\" />\r\n          <role>Trader</role>\r\n        </relatedPerson>\r\n        <executionDateTime>2018-04-03T10:34:26Z</executionDateTime>\r\n        <reportingRegime>\r\n          <actionType>N</actionType>\r\n        </reportingRegime>\r\n      </partyTradeInformation>\r\n      <tradeDate>2018-04-03</tradeDate>\r\n    </tradeHeader>\r\n    <fxSingleLeg>\r\n      <productType productTypeScheme=\"http://www.fpml.org/coding-scheme/product-taxonomy-4-0\">ForeignExchange:Spot</productType>\r\n      <exchangedCurrency1>\r\n        <payerPartyReference href=\"party1\"/>\r\n        <receiverPartyReference href=\"party2\"/>\r\n        <paymentAmount>\r\n          <currency currencyScheme=\"http://www.fpml.org/coding-scheme/external/iso4217-2016-07-01\">EUR</currency>\r\n          <amount>1000000</amount>\r\n        </paymentAmount>\r\n        <paymentDate>\r\n          <adjustedDate>2018-07-03</adjustedDate>\r\n        </paymentDate>\r\n      </exchangedCurrency1>\r\n      <exchangedCurrency2>\r\n        <payerPartyReference href=\"party2\"/>\r\n        <receiverPartyReference href=\"party1\"/>\r\n        <paymentAmount>\r\n          <currency currencyScheme=\"http://www.fpml.org/coding-scheme/external/iso4217-2016-07-01\">USD</currency>\r\n          <amount>1100200</amount>\r\n        </paymentAmount>\r\n        <paymentDate>\r\n          <adjustedDate>2018-07-03</adjustedDate>\r\n        </paymentDate>\r\n      </exchangedCurrency2>\r\n      <valueDate>2018-07-03</valueDate>\r\n      <exchangeRate>\r\n        <quotedCurrencyPair>\r\n          <currency1 currencyScheme=\"http://www.fpml.org/coding-scheme/external/iso4217-2016-07-01\">EUR</currency1>\r\n          <currency2 currencyScheme=\"http://www.fpml.org/coding-scheme/external/iso4217-2016-07-01\">USD</currency2>\r\n          <quoteBasis>Currency1PerCurrency2</quoteBasis>\r\n        </quotedCurrencyPair>\r\n        <rate>1.1004</rate>\r\n      </exchangeRate>\r\n    </fxSingleLeg>\r\n\t</trade>\r\n\t<quote>\r\n\t\t<value>4000</value>\r\n\t\t<currency>USD</currency>\r\n\t</quote>\r\n  <party id=\"party1\">\r\n    <partyId partyIdScheme=\"http://www.fpml.org/coding-scheme/external/iso17442\">Andile</partyId>\r\n    <partyName>AndileSolutions</partyName>\r\n    <person id=\"person1\">\r\n      <personId personIdScheme=\"ABNAMS1\">Michael Schumacher</personId>\r\n    </person>\r\n  </party>\r\n  <party id=\"party2\">\r\n    <partyId partyIdScheme=\"http://www.fpml.org/coding-scheme/external/iso17442\">Nedbank</partyId>\r\n  </party>\r\n</nonpublicExecutionReport>"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Wrong Payment",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"postman.setEnvironmentVariable(\"paymentID\", Math.floor(Math.random() * 100000) + 1  );"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://{{host}}:8280/payment/pay",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/xml",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<payment>\n\t<paymentID>wrongID</paymentID>\n\t<amount>1000</amount>\n\t<from>rushmin@wso2.com</from>\n</payment>"
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
