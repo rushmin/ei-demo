@@ -17,4 +17,10 @@
     <artifact name="payErrorSequence" groupId="org.wso2.ei.sample.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
         <file>src/main/synapse-config/sequences/payErrorSequence.xml</file>
     </artifact>
+    <artifact name="payBatchInSequence" groupId="org.wso2.ei.sample.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/payBatchInSequence.xml</file>
+    </artifact>
+    <artifact name="smooks-csv-config" groupId="org.wso2.ei.sample.local-entry" version="1.0.0" type="synapse/local-entry" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/local-entries/smooks-csv-config.xml</file>
+    </artifact>
 </artifacts>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="payBatchInSequence" trace="disable" xmlns="http://ws.apache.org/ns/synapse">
+    <call-template target="log">
+        <with-param name="message" value="Processing the batch payment before sending to the backend."/>
+    </call-template>
+    <switch source="$trp:Content-Type">
+        <case regex="application/vnd.ms-excel">
+            <property name="messageType" scope="axis2" type="STRING" value="application/xml"/>
+            <payloadFactory media-type="xml">
+                <format>
+                    <payment xmlns="">
+                        <paymentID>$1</paymentID>
+                        <amount>$2</amount>
+                        <from>$3</from>
+                    </payment>
+                </format>
+                <args>
+                    <arg evaluator="xml" expression="//Record[2]/Field[1]"/>
+                    <arg evaluator="xml" expression="//Record[2]/Field[2]"/>
+                    <arg evaluator="xml" expression="//Record[2]/Field[3]"/>
+                </args>
+            </payloadFactory>
+        </case>
+        <case regex="text/csv">
+            <smooks config-key="smooks-csv-config">
+                <input type="text"/>
+                <output type="xml"/>
+            </smooks>
+            <payloadFactory media-type="xml">
+                <format>
+                    <payment xmlns="">
+                        <paymentID>$1</paymentID>
+                        <amount>$2</amount>
+                        <from>$3</from>
+                    </payment>
+                </format>
+                <args>
+                    <arg evaluator="xml" expression="//payment[2]/PaymentID"/>
+                    <arg evaluator="xml" expression="//payment[2]/Amount"/>
+                    <arg evaluator="xml" expression="//payment[2]/From"/>
+                </args>
+            </payloadFactory>
+        </case>
+        <default/>
+    </switch>
+    <call>
+        <endpoint key="legacyPaymentServiceEndpoint"/>
+    </call>
+    <call-template target="log">
+        <with-param name="message" value="Processing the response from the backend."/>
+    </call-template>
+    <respond/>
+</sequence>

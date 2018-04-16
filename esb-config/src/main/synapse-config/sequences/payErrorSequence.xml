@@ -3,6 +3,9 @@
     <call-template target="log">
         <with-param name="message" value="In error sequence."/>
     </call-template>
+    <call-template target="log">
+        <with-param name="message" value="{{get-property(ERROR_EXCEPTION)}}"/>
+    </call-template>
     <payloadFactory media-type="xml">
         <format>
             <error>

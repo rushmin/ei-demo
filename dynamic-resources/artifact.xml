@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><artifacts>
-    <artifact name="legacyPaymentServiceEndpoint" groupId="org.wso2.ei.sample.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
-        <item>
-            <file>legacyPaymentServiceEndpoint.xml</file>
-            <path>/_system/config/repository/payment/endpoints</path>
-            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
-        </item>
-    </artifact>
-</artifacts>

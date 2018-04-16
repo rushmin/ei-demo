@@ -3,4 +3,7 @@
     <resource faultSequence="payErrorSequence" inSequence="payInSequence" methods="POST" url-mapping="/pay">
         <outSequence/>
     </resource>
+    <resource faultSequence="payErrorSequence" inSequence="payBatchInSequence" methods="POST" url-mapping="/pay/batch">
+        <outSequence/>
+    </resource>
 </api>

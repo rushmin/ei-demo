@@ -14,27 +14,17 @@
   <name>distribution</name>
   <description>distribution</description>
   <properties>
-    <org.wso2.ei.sample.resource_._legacyPaymentServiceEndpoint>capp/EnterpriseServiceBus</org.wso2.ei.sample.resource_._legacyPaymentServiceEndpoint>
-    <org.wso2.ei.sample.template_._log>capp/EnterpriseServiceBus</org.wso2.ei.sample.template_._log>
-    <org.wso2.ei.sample.sequence_._payErrorSequence>capp/EnterpriseServiceBus</org.wso2.ei.sample.sequence_._payErrorSequence>
-    <org.wso2.ei.sample.api_._paymentAPI>capp/EnterpriseServiceBus</org.wso2.ei.sample.api_._paymentAPI>
-    <org.wso2.ei.sample.api_._legacyPaymentService>capp/EnterpriseServiceBus</org.wso2.ei.sample.api_._legacyPaymentService>
-    <org.wso2.ei.sample.sequence_._payInSequence>capp/EnterpriseServiceBus</org.wso2.ei.sample.sequence_._payInSequence>
     <artifact.types>jaggery/app=zip,synapse/priority-executor=xml,synapse/inbound-endpoint=xml,service/rule=aar,synapse/message-store=xml,event/stream=json,service/meta=xml,datasource/datasource=xml,synapse/proxy-service=xml,bpel/workflow=zip,synapse/sequence=xml,synapse/endpointTemplate=xml,carbon/application=car,wso2/gadget=dar,synapse/api=xml,synapse/event-source=xml,synapse/message-processors=xml,event/receiver=xml,lib/dataservice/validator=jar,synapse/template=xml,synapse/endpoint=xml,lib/carbon/ui=jar,lib/synapse/mediator=jar,event/publisher=xml,synapse/local-entry=xml,synapse/task=xml,webapp/jaxws=war,registry/resource=zip,synapse/configuration=xml,service/axis2=aar,synapse/lib=zip,synapse/sequenceTemplate=xml,event/execution-plan=siddhiql,service/dataservice=dbs,web/application=war,lib/library/bundle=jar</artifact.types>
+    <org.wso2.ei.sample.local-entry_._smooks-csv-config>capp/EnterpriseServiceBus</org.wso2.ei.sample.local-entry_._smooks-csv-config>
+    <org.wso2.ei.sample.api_._legacyPaymentService>capp/EnterpriseServiceBus</org.wso2.ei.sample.api_._legacyPaymentService>
+    <org.wso2.ei.sample.sequence_._payBatchInSequence>capp/EnterpriseServiceBus</org.wso2.ei.sample.sequence_._payBatchInSequence>
+    <org.wso2.ei.sample.api_._paymentAPI>capp/EnterpriseServiceBus</org.wso2.ei.sample.api_._paymentAPI>
+    <org.wso2.ei.sample.template_._log>capp/EnterpriseServiceBus</org.wso2.ei.sample.template_._log>
+    <org.wso2.ei.sample.endpoint_._embeddedLegacyPaymentServiceEndpoint>capp/EnterpriseServiceBus</org.wso2.ei.sample.endpoint_._embeddedLegacyPaymentServiceEndpoint>
+    <org.wso2.ei.sample.sequence_._payInSequence>capp/EnterpriseServiceBus</org.wso2.ei.sample.sequence_._payInSequence>
+    <org.wso2.ei.sample.sequence_._payErrorSequence>capp/EnterpriseServiceBus</org.wso2.ei.sample.sequence_._payErrorSequence>
   </properties>
   <dependencies>
-    <dependency>
-      <groupId>org.wso2.ei.sample.resource</groupId>
-      <artifactId>legacyPaymentServiceEndpoint</artifactId>
-      <version>1.0.0</version>
-      <type>zip</type>
-    </dependency>
-    <dependency>
-      <groupId>org.wso2.ei.sample.api</groupId>
-      <artifactId>legacyPaymentService</artifactId>
-      <version>1.0.0</version>
-      <type>xml</type>
-    </dependency>
     <dependency>
       <groupId>org.wso2.ei.sample.api</groupId>
       <artifactId>paymentAPI</artifactId>
@@ -56,6 +46,30 @@
     <dependency>
       <groupId>org.wso2.ei.sample.template</groupId>
       <artifactId>log</artifactId>
+      <version>1.0.0</version>
+      <type>xml</type>
+    </dependency>
+    <dependency>
+      <groupId>org.wso2.ei.sample.sequence</groupId>
+      <artifactId>payBatchInSequence</artifactId>
+      <version>1.0.0</version>
+      <type>xml</type>
+    </dependency>
+    <dependency>
+      <groupId>org.wso2.ei.sample.endpoint</groupId>
+      <artifactId>embeddedLegacyPaymentServiceEndpoint</artifactId>
+      <version>1.0.0</version>
+      <type>xml</type>
+    </dependency>
+    <dependency>
+      <groupId>org.wso2.ei.sample.local-entry</groupId>
+      <artifactId>smooks-csv-config</artifactId>
+      <version>1.0.0</version>
+      <type>xml</type>
+    </dependency>
+    <dependency>
+      <groupId>org.wso2.ei.sample.api</groupId>
+      <artifactId>legacyPaymentService</artifactId>
       <version>1.0.0</version>
       <type>xml</type>
     </dependency>
