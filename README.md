@@ -37,6 +37,7 @@ A custom message build which converts the incoming MS Excel binary to an XML pay
    2. Deploy the MS Excel message builder
 
          Copy PROJECT_HOME/excel-message-builder/target/excel-message-builder-1.0.0.jar to EI_HOME/lib
+         Copy PROJECT_HOME/lib/commons-collections4-4.1.jar to EI_HOME/lib
 
 4. Import the Postman script file to Postman client to call the sample endpoints.
 
