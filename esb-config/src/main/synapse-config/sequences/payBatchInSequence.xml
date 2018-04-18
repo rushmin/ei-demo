@@ -49,5 +49,4 @@
     <call-template target="log">
         <with-param name="message" value="Processing the response from the backend."/>
     </call-template>
-    <respond/>
 </sequence>

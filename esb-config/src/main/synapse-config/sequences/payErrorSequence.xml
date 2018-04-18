@@ -4,7 +4,10 @@
         <with-param name="message" value="In error sequence."/>
     </call-template>
     <call-template target="log">
-        <with-param name="message" value="{{get-property(ERROR_EXCEPTION)}}"/>
+        <with-param name="message" value="{concat('ERROR_MESSAGE : ', get-property('ERROR_MESSAGE'))}"/>
+    </call-template>
+    <call-template target="log">
+        <with-param name="message" value="{concat('ERROR_EXCEPTION : ', get-property('ERROR_EXCEPTION'))}"/>
     </call-template>
     <payloadFactory media-type="xml">
         <format>
