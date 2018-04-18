@@ -18,6 +18,10 @@ A custom message build which converts the incoming MS Excel binary to an XML pay
 
 [Postman](https://www.getpostman.com/) scripts along with sample payloads to test the samples.
 
+### resources
+
+Resources (e.g. input files) which are used for data processing etc ..
+
 ## How should I use these samples ?
 
 1. Import the project
@@ -40,4 +44,21 @@ A custom message build which converts the incoming MS Excel binary to an XML pay
          2. Copy PROJECT_HOME/lib/commons-collections4-4.1.jar to EI_HOME/lib
 
 4. Import the Postman script file to Postman client to call the sample endpoints.
+
+## Folder structure for VFS sample.
+
+```
+├── csv
+│   ├── failure
+│   ├── in
+│   │   └── payments.csv
+│   ├── out
+│   └── processed
+├── excel
+│   ├── failure
+│   ├── in
+│   │   └── payments.xlsx
+│   ├── out
+│   └── processed
+```
 
