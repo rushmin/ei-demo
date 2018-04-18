@@ -45,7 +45,7 @@ Resources (e.g. input files) which are used for data processing etc ..
 
    2. Deploy the MS Excel message builder
 
-         1. If you built the project, copy PROJECT_HOME/excel-message-builder/target/excel-message-builder-1.0.0.jar to EI_HOME/lib OR if you want to use the pre-built jar files copy copy PROJECT_HOME/lib/excel-message-builder-1.0.0.jar to EI_HOME/lib
+         1. If you built the project, copy PROJECT_HOME/excel-message-builder/target/excel-message-builder-1.0.0.jar to EI_HOME/lib OR if you want to use the pre-built jar files copy PROJECT_HOME/lib/excel-message-builder-1.0.0.jar to EI_HOME/lib
          2. Copy PROJECT_HOME/lib/commons-collections4-4.1.jar to EI_HOME/lib
 
 4. Import the Postman script file to Postman client to call the sample endpoints.
